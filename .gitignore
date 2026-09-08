@@ -1,0 +1,13 @@
+# Python & Ambientes Virtuais
+__pycache__/
+*.py[cod]
+venv/
+env/
+
+# Testes
+.pytest_cache/
+coverage.xml
+
+# Infra & Segredos
+.env
+.db-data/
