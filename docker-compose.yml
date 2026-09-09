@@ -10,6 +10,7 @@ services:
       - FLASK_APP=api/app.py
       - FLASK_ENV=development
       - DATABASE_URL=postgresql://v360_user:v360_password@db:5432/v360_db
+      - PYTHONPATH=/app
     depends_on:
       - db
 
