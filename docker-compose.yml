@@ -1,0 +1,30 @@
+services:
+  api:
+    build: .
+    container_name: v360_api
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_APP=api/app.py
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://v360_user:v360_password@db:5432/v360_db
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    container_name: v360_db
+    restart: always
+    environment:
+      - POSTGRES_USER=v360_user
+      - POSTGRES_PASSWORD=v360_password
+      - POSTGRES_DB=v360_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
